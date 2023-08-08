@@ -12,7 +12,7 @@
 
     <main class="container bg-light mt-4">
         <div>
-            <a href="#" class="btn btn-primary m-2">
+            <a th:href="@{/comercio/produtos/novoproduto}" class="btn btn-primary m-2">
                 <i class="fas fa-cart-plus ml-2"></i>
                 Novo Produto
             </a>
@@ -24,13 +24,26 @@
                 <tr>
                     <th>ID</th>
                     <th>Nome</th>
-                    <th>Código de Barras</th>
+                    <th>Descrição</th>
+                    <th>Código de Barra</th>
                     <th>Preço</th>
                     <th>Editar</th>
                 </tr>
             </thead>
         <tbody>
+            <tr th:each="produto : ${listaDeProdutos}">
+                <td th:text="${produto.id}"></td>
+                <td th:text="${produto.nome}"></td>
+                <td th:text="${produto.descricao}"></td>
+                <td th:text="${produto.codigoBarra}"></td>
+                <td th:text="${#numbers.formatCurrency(produto.preco)}"></td>
+                <td>
+                    <a href="#" class="btn btn-primary">
+                        <i class="fas fa-edit ml-2"></i>
 
+                    </a>
+                </td>
+            </tr>
         </tbody>
         </table>
         </div>
